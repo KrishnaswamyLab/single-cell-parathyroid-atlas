@@ -9,7 +9,7 @@ logging.basicConfig(level=logging.INFO)
 
 # Load raw data files
 samples = ['Y7', 'Y9', 'Y11', 'Y13']
-PATH = 'data'
+PATH = '../data'
 filenames = [os.path.join(PATH, sample+'_filtered_feature_bc_matrix.h5') for sample in samples]
 
 adatas = []
@@ -54,6 +54,6 @@ logging.info(f'After gene filtering')
 logging.info(f'...{sdata.n_obs}, {sdata.n_vars}')
 
 # Save
-sdata.write('intermediate_files/1_preprocessed_human_data.h5ad')
-sdata.obs['sample'].to_csv('intermediate_files/1_preprocessed_human_data_sample_ids.csv')
-io.mmwrite('intermediate_files/1_preprocessed_human_data.mtx', sdata.X)
+sdata.write('../data/intermediate_files/1_preprocessed_human_data.h5ad')
+sdata.obs['sample'].to_csv('../data/intermediate_files/1_preprocessed_human_data_sample_ids.csv')
+io.mmwrite('../data/intermediate_files/1_preprocessed_human_data.mtx', sdata.X)

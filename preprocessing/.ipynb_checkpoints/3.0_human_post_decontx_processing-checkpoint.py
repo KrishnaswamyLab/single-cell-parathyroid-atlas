@@ -5,8 +5,8 @@ from scipy import io, sparse
 from pygsp import graphs, filters
 
 # Load data
-data = io.mmread('intermediate_files/2_decontx_human_data.mtx')
-orig_data = sc.read_h5ad('intermediate_files/1_preprocessed_human_data.h5ad')
+data = io.mmread('../data/intermediate_files/2_decontx_human_data.mtx')
+orig_data = sc.read_h5ad('../data/intermediate_files/1_preprocessed_human_data.h5ad')
 data = data.T.toarray() # decontx uses transposed matrix
 
 # Normalize & Transform
@@ -42,4 +42,4 @@ phate_op = phate.PHATE(n_components=2, random_state=0, use_pygsp=True)
 data_phate = phate_op.fit_transform(G)
 sdata.obsm["X_phate_mnn"] = data_phate[0:,0:]
 
-sdata.write('processed_files/3_human_all_cell_types_all_genes.h5ad')
+sdata.write('../data/processed_files/3_human_all_cell_types_all_genes.h5ad')
